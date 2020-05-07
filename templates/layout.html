@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>CoVi-Track</title>
+        <link href="https://image.shutterstock.com/image-vector/hexagon-logo-cube-optical-illusion-260nw-1177740778.jpg" rel="icon" type="image/x-icon">
+        <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/static/css/clean-blog.min.css" rel="stylesheet">
+        <link href="/static/css/styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-md navbar-light bg-light border">
+            <a class="navbar-brand" href="/"><span class="blue">Co</span><span class="red">Vi</span><span class="yellow">-</span><span class="green">Track</span></a>
+            <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <div class="pill-nav">
+                {% if not session.user_id %}
+                    <ul class="navbar-nav ml-auto mt-2">
+                        <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/country">Countries</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/usstates">US states</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/instates">India states</a></li>
+                    </ul>
+                {% else %}
+                    <ul class="navbar-nav ml-auto mt-2">
+                        <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/dailysa">Daily Self-Analysis</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/history">History</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+                    </ul>
+                {% endif %}
+                </div>
+            </div>
+        </nav>
+        <div>{% block div %} {% endblock %}</div>
+        <main class="container p-5">{% block main %} {% endblock %}</main>
+        <hr>
+        <div class="bottom-container">
+            <center>
+            <p class="copyright">© 2020 Athul Sanjose
+            <br>
+            Data sourced for free using Novel COVID API</p>
+            </center>
+        </div>
+    </body>
+</html>

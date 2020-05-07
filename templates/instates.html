@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block div %}
+<header class="masthead" style="background-image: url('https://cdn2.vectorstock.com/i/1000x1000/21/16/polygonal-2d-mesh-map-of-india-vector-23642116.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>Statistics for Indian States</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if get_flashed_messages() %}
+        <div class="alert alert-primary border text-center" role="alert">
+            {{ get_flashed_messages() | join(" ") }}
+        </div>
+    {% endif %}
+</header>
+{% endblock %}
+{% block main %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <p style = "color: Salmon">Enter the name of an Indian state/UT and hit search to view its CoViD-19 statistics. Note that this is case-sensitive
+            and also make sure to check the spelling.</p>
+            <form class="form-inline my-2 my-lg-0" method="post" action="/instates">
+                <input class="form-control mr-sm-4" type="search" name="sname" placeholder="State/UT Name" aria-label="Search">
+                <button class="btn btn-outline-info" type="submit">Search</button>
+            </form>
+            <br><br>
+            {% if data3 %}
+                <div class="jumbotron">
+                <center><p style = "color: darkseagreen; font-size: 40px"> Statistics for {{data3['loc']}}</p></center>
+                </center>
+                <ul class = "list-group">
+                    <li class="list-group-item list-group-item-primary">Total Cases : {{data3['totalConfirmed']}}</li>
+                    <li class="list-group-item list-group-item-success">Discharged : {{data3['discharged']}}</li>
+                    <li class="list-group-item list-group-item-dark">Deaths : {{data3['deaths']}}</li>
+                    <li class="list-group-item list-group-item-info">Confirmed cases Indian : {{data3['confirmedCasesIndian']}}</li>
+                    <li class="list-group-item list-group-item-info">Confirmed cases Foreign : {{data3['confirmedCasesForeign']}}</li>
+                </ul>
+                </div>
+                <br><br>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

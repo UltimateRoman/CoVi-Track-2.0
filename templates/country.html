@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block div %}
+<header class="masthead" style="background-image: url('https://assets.wallpapersin4k.org/uploads/2017/04/Cool-World-Map-Wallpaper-9.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>Statistics by country</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if get_flashed_messages() %}
+        <div class="alert alert-primary border text-center" role="alert">
+            {{ get_flashed_messages() | join(" ") }}
+        </div>
+    {% endif %}
+</header>
+{% endblock %}
+{% block main %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <p style = "color: Salmon">Enter the name of a country and hit search to view its CoViD-19 statistics. It is not case-sensitive but make sure
+            to check the spelling.</p>
+            <form class="form-inline my-2 my-lg-0" method="post" action="/country">
+                <input class="form-control mr-sm-2" type="search" name="cname" placeholder="Country Name" aria-label="Search">
+                <button class="btn btn-outline-info" type="submit">Search</button>
+            </form>
+            <br><br>
+            {% if data1 %}
+                <div class="jumbotron">
+                <center><p style = "color: royalblue; font-size: 40px"> Statistics for {{data1['country']}}</p>
+                <img src="{{data1["countryInfo"]["flag"]}}" alt="countryflag"></center>
+                <br>
+                <ul class = "list-group" style="list-style-type:none; color: DimGrey">
+                    <li class="list-group-item list-group-item-primary">Total Cases : {{data1['cases']}}</li>
+                    <li class="list-group-item list-group-item-warning">Active Cases : {{data1['active']}}</li>
+                    <li class="list-group-item list-group-item-success">Recovered : {{data1['recovered']}}</li>
+                    <li class="list-group-item list-group-item-danger">Critical Cases : {{data1['critical']}}</li>
+                    <li class="list-group-item list-group-item-dark">Deaths : {{data1['deaths']}}</li>
+                    <li class="list-group-item list-group-item-light">Tests : {{data1['tests']}}</li>
+                    <li class="list-group-item list-group-item-info">Cases reported today : {{data1['todayCases']}}</li>
+                    <li class="list-group-item list-group-item-dark">Deaths reported today : {{data1['todayDeaths']}}</li>
+                    <li class="list-group-item list-group-item-info">Cases per one million : {{data1['casesPerOneMillion']}}</li>
+                    <li class="list-group-item list-group-item-dark">Deaths per one million : {{data1['deathsPerOneMillion']}}</li>
+                    <li class="list-group-item list-group-item-light">Tests per one million : {{data1['testsPerOneMillion']}}</li>
+                </ul>
+                </div>
+                <br><br>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

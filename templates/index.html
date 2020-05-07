@@ -1,0 +1,154 @@
+{% extends "layout.html" %}
+{% block div %}
+<header class="masthead" style="background-image: url('https://images.newscientist.com/wp-content/uploads/2020/01/27123401/f0070229-coronavirus_artwork-spl.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>CoVi-Track</h1>
+                    <br>
+                    <h3>CoViD-19 Statistics tracking and Self-symptom monitoring</h3>
+                    <span class="subheading">By Athul Sanjose</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
+{% block main %}
+<style>
+    .row1 {
+  display: flex;
+}
+
+.column1 {
+  flex: 50%;
+}
+.container2 {
+  position: relative;
+  width: 90%;
+}
+
+.image2 {
+  display: block;
+  width: 100%;
+  height: 250px;
+}
+
+.overlay2 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #008CBA;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  transform: scale(0);
+  transition: .4s ease;
+}
+
+.container2:hover .overlay2 {
+  transform: scale(1);
+}
+
+.text2 {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <p>The CoViD-19 pandemic has brought tremendous destruction to the world. It has resulted in huge numbers of deaths and the consequences
+            include economic collapse and widespread loss of jobs. It is neccessary to follow personal safety precautions and curb this pandemic before it causes
+            any more destruction.</p>
+            <br>
+            <p style="font-size: 28px; color: DodgerBlue;">How to protect yourselves and others around you</p>
+            <br>
+            <div class="row1">
+                <div class="column1">
+                <div class="container2">
+                <img src="https://i.pinimg.com/736x/b2/d5/9d/b2d59d755f0fb1c0783af95bfbfbf564.jpg" alt="Avatar1" class="image2">
+                  <div class="overlay2">
+                    <div class="text2">Do not sneeze or cough without covering</div>
+                  </div>
+                </div>
+                </div>
+                <div class="column1">
+                <div class="container2">
+                <img src="https://www.reactionarytimes.com/images/2020/03/social-distancing.jpg" alt="Avatar2" class="image2">
+                  <div class="overlay2">
+                    <div class="text2">Follow social distancing and avoid close contact with others</div>
+                  </div>
+                </div>
+                </div>
+            </div>
+            <br>
+            <div class="row1">
+                <div class="column1">
+                <div class="container2">
+                <img src="https://prnewswire2-a.akamaihd.net/p/1893751/sp/189375100/thumbnail/entry_id/0_sy6cdtct/def_height/2700/def_width/2700/version/100012/type/1" alt="Avatar3" class="image2">
+                  <div class="overlay2">
+                    <div class="text2">Wash your hands for atleast 20 secs with hand-wash frequently</div>
+                  </div>
+                </div>
+                </div>
+                <div class="column1">
+                <div class="container2">
+                <img src="https://cdn.newsapi.com.au/image/v1/d8bb4f35b2c2cc1ba852349738686dae?width=650" alt="Avatar4" class="image2">
+                  <div class="overlay2">
+                    <div class="text2">Do not touch any parts of your face, to avoid contamination</div>
+                  </div>
+                </div>
+                </div>
+            </div>
+            <br>
+            <div class="row1">
+                <div class="column1">
+                <div class="container2">
+                <img src="https://thumbs.dreamstime.com/b/man-wearing-face-mask-environmental-industrial-smog-dust-toxic-air-pollution-virus-protection-concept-african-man-wearing-face-156224886.jpg" alt="Avatar5" class="image2">
+                  <div class="overlay2">
+                    <div class="text2">Wear a mask always when outdoors</div>
+                  </div>
+                </div>
+                </div>
+                <div class="column1">
+                <div class="container2">
+                <img src="https://www.ama-assn.org/sites/ama-assn.org/files/styles/article_stub_800_x_600/public/2020-04/2020-04-03-index-NGALETTER.jpg?itok=Q329kmQj" alt="Avatar6" class="image2">
+                  <div class="overlay2">
+                    <div class="text2">Stay indoors if you exhibit crucial symptoms</div>
+                  </div>
+                </div>
+                </div>
+            </div>
+            <br>
+            <p>The current data about CoViD-19 cases globally is shown in the table below.</p>
+            <br><br>
+            <div class="jumbotron">
+            <center><p style = "color: cornflowerblue; font-size: 40px;"> Global Statistics</p></center>
+            <ul class = "list-group">
+                <li class="list-group-item list-group-item-primary">Total Cases : {{data0['cases']}}</li>
+                <li class="list-group-item list-group-item-warning">Active Cases : {{data0['active']}}</li>
+                <li class="list-group-item list-group-item-success">Recovered : {{data0['recovered']}}</li>
+                <li class="list-group-item list-group-item-danger">Critical Cases : {{data0['critical']}}</li>
+                <li class="list-group-item list-group-item-dark">Deaths : {{data0['deaths']}}</li>
+                <li class="list-group-item list-group-item-light">Tests : {{data0['tests']}}</li>
+                <li class="list-group-item list-group-item-info">Cases reported today : {{data0['todayCases']}}</li>
+                <li class="list-group-item list-group-item-dark">Deaths reported today : {{data0['todayDeaths']}}</li>
+                <li class="list-group-item list-group-item-info">Cases per one million : {{data0['casesPerOneMillion']}}</li>
+                <li class="list-group-item list-group-item-dark">Deaths per one million : {{data0['deathsPerOneMillion']}}</li>
+                <li class="list-group-item list-group-item-light">Tests per one million : {{data0['testsPerOneMillion']}}</li>
+            </ul>
+            </div>
+            <br><br>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block div %}
+<header class="masthead" style="background-image: url('https://gavinlaurencerouille.files.wordpress.com/2012/03/prophets5.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>Statistics for US states</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if get_flashed_messages() %}
+        <div class="alert alert-primary border text-center" role="alert">
+            {{ get_flashed_messages() | join(" ") }}
+        </div>
+    {% endif %}
+</header>
+{% endblock%}
+{% block main %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <p style = "color: Salmon">Enter the name of an American state and hit search to view its CoViD-19 statistics. It is not case-sensitive but make sure
+            to check the spelling.</p>
+            <form class="form-inline my-2 my-lg-0" method="post" action="/usstates">
+                <input class="form-control mr-sm-2" type="search" name="sname" placeholder="State Name" aria-label="Search">
+                <button class="btn btn-outline-info" type="submit">Search</button>
+            </form>
+            <br><br>
+            {% if data2 %}
+                <div class="jumbotron">
+                <center><p style = "color: palevioletred; font-size: 40px"> Statistics for {{data2['state']}}</p></center>
+                <ul class = "list-group">
+                    <li class="list-group-item list-group-item-primary">Total Cases : {{data2['cases']}}</li>
+                    <li class="list-group-item list-group-item-warning">Active Cases : {{data2['active']}}</li>
+                    <li class="list-group-item list-group-item-dark">Deaths : {{data2['deaths']}}</li>
+                    <li class="list-group-item list-group-item-info">Cases reported today : {{data2['todayCases']}}</li>
+                    <li class="list-group-item list-group-item-dark">Deaths reported today : {{data2['todayDeaths']}}</li>
+                    <li class="list-group-item list-group-item-light">Tests : {{data2['tests']}}</li>
+                    <li class="list-group-item list-group-item-light">Tests per one million : {{data2['testsPerOneMillion']}}</li>
+                </ul>
+                </div>
+                <br><br>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

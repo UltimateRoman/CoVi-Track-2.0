@@ -1,0 +1,78 @@
+nav .navbar-brand
+{
+    font-size: xx-large;
+}
+
+/* colors for brand */
+nav .navbar-brand .blue
+{
+    color: #537fbe;
+}
+nav .navbar-brand .red
+{
+    color: #ea433b;
+}
+nav .navbar-brand .yellow
+{
+    color: #f5b82e;
+}
+nav .navbar-brand .green
+{
+    color: #2e944b;
+}
+
+main .form-control
+{
+    display: inline-block;
+    width: auto;
+}
+
+.pill-nav li:hover
+{
+  background-color: #ddd;
+  color: Teal;
+}
+
+.pill-nav li.active
+{
+  background-color: lightBlue;
+  color: white;
+}
+
+.flip-box {
+  background-color: transparent;
+  width: 300px;
+  height: 200px;
+  border: 1px solid #f1f1f1;
+}
+
+.flip-box-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-box:hover .flip-box-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-box-front, .flip-box-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-box-front {
+  background-color: CornFlowerBlue;
+  color: White;
+}
+
+.flip-box-back {
+  background-color: CadetBlue;
+  color: White;
+  transform: rotateY(180deg);
+}

@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block main %}
+<div style="overflow-x:auto;">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Date</th>
+                <th>Change in risk points</th>
+                <th>Previous risk points</th>
+                <th>New risk points</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in records %}
+            <tr>
+                <td>{{row["actdate"]}}</td>
+                <td>{{row["rpchange"]}}</td>
+                <td>{{row["prevrp"]}}</td>
+                <td>{{row["newrp"]}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

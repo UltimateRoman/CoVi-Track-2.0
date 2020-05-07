@@ -1,0 +1,113 @@
+{% extends "layout.html" %}
+{% block main %}
+    {% if get_flashed_messages() %}
+        <div class="alert alert-primary border text-center" role="alert">
+            {{ get_flashed_messages() | join(" ") }}
+        </div>
+    {% endif %}
+ <style>
+.zoom
+{
+  padding: 10px;
+  background-color: PaleGreen;
+  transition: transform .2s;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+}
+
+.zoom:hover
+{
+  transform: scale(2);
+}
+.zoom1
+{
+  padding: 10px;
+  background-color: LemonChiffon;
+  transition: transform .2s;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+}
+
+.zoom1:hover
+{
+  transform: scale(2);
+}
+
+.zoom2
+{
+  padding: 10px;
+  background-color: Salmon;
+  transition: transform .2s;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+}
+
+.zoom2:hover
+{
+  transform: scale(2);
+}
+</style>
+<center>
+{% if riskps <= 6 %}
+<p style="font-size: 40px; color: DarkSlateBlue;"> Your current risk points: </p>
+<div class="zoom">
+    <p style="font-size:50px">{{riskps}}</p>
+</div>
+<p>You currently seem to be <span style="color: ForestGreen; font-size: 30px;">SAFE</span>, but do not be careless as there are quite many asymptomatic cases too.</p>
+{% elif riskps > 6 and riskps <= 25 %}
+<p style="font-size: 40px;color: DarkSlateBlue;"> Your current risk points: </p>
+<div class="zoom1">
+    <p style="font-size:50px">{{riskps}}</p>
+</div>
+<p>You currently seem to be at <span style="color: BurlyWood; font-size: 30px;">MODERATE-RISK</span>. Kindly refrain yourselves from travelling outside as far as possible for a few days.</p>
+{% else %}
+<p style="font-size: 40px; color: DarkSlateBlue;"> Your current risk points: </p>
+<div class="zoom2">
+    <p style="font-size:50px">{{riskps}}</p>
+</div>
+<p>You currently seem to be at <span style="color: FireBrick; font-size: 30px;">HIGH RISK</span>. Strictly stay indoors for a few days.</p>
+{% endif %}
+<br><br><br>
+{% if tpoints %}
+{% if tpoints > 0 %}
+<div class="flip-box">
+    <div class="flip-box-inner">
+        <div class="flip-box-front">
+            <h2>Today's change in risk points:</h2>
+            <p style="font-size: 40px">+{{tpoints}}</p>
+        </div>
+        <div class="flip-box-back">
+            <p style="font-size: 30px">Your symptoms do not look good for now</p>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="flip-box">
+    <div class="flip-box-inner">
+        <div class="flip-box-front">
+            <h2>Today's change in risk points:</h2>
+            <p style="font-size: 40px">{{tpoints}}</p>
+        </div>
+        <div class="flip-box-back">
+            <p style="font-size: 30px">Your symptoms seem to be improving</p>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% else %}
+<div class="flip-box">
+    <div class="flip-box-inner">
+        <div class="flip-box-front">
+            <p style="font-size: 30px">Your self-analysis for today is pending</p>
+        </div>
+        <div class="flip-box-back">
+            <p style="font-size: 30px">Follow personal safety precautions and STAY SAFE!</p>
+        </div>
+    </div>
+</div>
+{% endif %}
+</center>
+{% endblock %}
